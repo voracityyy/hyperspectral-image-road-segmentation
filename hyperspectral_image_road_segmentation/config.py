@@ -18,6 +18,9 @@ EXTERNAL_DATA_DIR = DATA_DIR / "external"
 
 MODELS_DIR = PROJ_ROOT / "models"
 
+HYPERSPECTRAL_DIR = EXTERNAL_DATA_DIR / "hyperspectral"
+MASKS_DIR = EXTERNAL_DATA_DIR / "masks"
+
 REPORTS_DIR = PROJ_ROOT / "reports"
 FIGURES_DIR = REPORTS_DIR / "figures"
 
