@@ -19,11 +19,11 @@ class LoadHyperspectralImages(Dataset):
 
         # Initialize both image types sorted, so they match 1-1 with each other.
         self.hyperspectral_images = sorted(HYPERSPECTRAL_DIR.glob("*_nir.tif"))
-        self.mask_images  = sorted(MASKS_DIR.glob("*_nif.tif"))
+        self.mask_images  = sorted(MASKS_DIR.glob("*_nir.tif"))
 
         # Crash program if file count does not match.
         assert len(self.hyperspectral_images) == len(self.mask_images), (
-            f"Error, mismatched counts: {len(self.image_files)} hyperspectral, {len(self.mask_files)} masks"
+            f"Error, mismatched counts: {len(self.hyperspectral_images)} hyperspectral, {len(self.mask_images)} masks"
         )
 
         # At this point both image counts should be equal

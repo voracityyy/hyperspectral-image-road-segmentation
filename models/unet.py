@@ -11,6 +11,7 @@ def build_unet():
     model = smp.Unet(
         "resnet18", 
         encoder_weights="imagenet", 
-        classes=1
+        classes=1,
+        in_channels=25
     )
     return model
