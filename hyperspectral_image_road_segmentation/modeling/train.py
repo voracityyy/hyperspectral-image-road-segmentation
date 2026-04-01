@@ -32,10 +32,14 @@ def main(
     total_size = len(tensor)
     train_size = int(0.8 * total_size)
     validation_size = int(0.1 * total_size)
-    train_ds, validation_ds = random_split(tensor, [train_size, validation_size])
+    test_size = int(total_size - train_size - validation_size) # aka the remainder
+    train_ds, validation_ds, test_ds = random_split(tensor, [train_size, validation_size, test_size])
+
+    # Save for predict.py
+    np.save(MODELS_DIR / "test_idx.npy", test_ds.indices)
     
     train_loader = DataLoader(train_ds, batch_size=16, shuffle=True)
-    val_loader = DataLoader(validation_ds, batch_size=16, shuffle=false)
+    val_loader = DataLoader(validation_ds, batch_size=16, shuffle=False)
 
     # Use GPU if available
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
