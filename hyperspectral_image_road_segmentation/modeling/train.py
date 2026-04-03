@@ -70,6 +70,8 @@ def main(
     # stop training to prevent overfitting
     no_improvement_count = 0
     patience = 10
+    # Track the epoch saved
+    best_epoch = 0
     
     # ---- TRAINING LOOP ----
     for epoch in range(0, 100):
@@ -117,12 +119,13 @@ def main(
 
         scheduler.step(val_loss_avg)
 
-        logger.info(f"epoch {epoch+1:02d} train_loss_avg={train_loss_avg:.4f} val_loss_avg={val_loss_avg:.4f}")
+        logger.info(f"epoch {epoch+1} train_loss_avg={train_loss_avg:.4f} val_loss_avg={val_loss_avg:.4f}")
 
         # Save model
         if val_loss_avg < best_val_loss:
             best_val_loss = val_loss_avg
             best_state = model.state_dict()
+            best_epoch = epoch + 1
         else: 
             no_improvement_count += 1
 
@@ -131,7 +134,7 @@ def main(
 
     MODELS_DIR.mkdir(parents=True, exist_ok=True)
     torch.save(best_state, model_path)
-    logger.success(f"Model saved to {model_path}")
+    logger.success(f"Model saved to {model_path} from epoch {best_epoch}")
 
     # Save history for plotting
     np.save(FIGURES_DIR / "train_loss.npy", train_loss_hist)
