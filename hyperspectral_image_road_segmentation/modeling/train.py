@@ -66,6 +66,10 @@ def main(
     best_val_loss = float("inf")
     # Track the weights from best performing epoch
     best_state = None
+    # If there is no validation loss improvement after 10 epochs,
+    # stop training to prevent overfitting
+    no_improvement_count = 0
+    patience = 10
     
     # ---- TRAINING LOOP ----
     for epoch in range(0, 100):
@@ -73,11 +77,6 @@ def main(
         model.train()
         train_loss_total = 0
         train_sample_total = 0
-
-        # If there is no validation loss improvement after 10 epochs,
-        # stop training to prevent overfitting
-        no_improvement_count = 0
-        patience = 10
 
         for hyperspectrals, masks in train_loader:
             hyperspectrals = hyperspectrals.to(device)
