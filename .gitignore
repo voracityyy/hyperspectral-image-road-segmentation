@@ -193,3 +193,6 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# zone identifier files
+*Zone.Identifier
