@@ -1,9 +1,9 @@
 # Model
 *.pth
+*.pkl
 
 # Data
 *.tif
-*.npy
 
 # Mac OS-specific storage files
 .DS_Store
