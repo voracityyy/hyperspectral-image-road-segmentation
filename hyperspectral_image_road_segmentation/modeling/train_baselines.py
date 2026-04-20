@@ -54,8 +54,10 @@ def main(
         # No need to transpose masks because its already 1 dimension
         y = masks.numpy().reshape(-1)
 
-        random_forest.fit(X, y)
-        random_forest.n_estimators += 1
+        # Limit the number of decision trees to 100
+        if random_forest.n_estimators < 100:
+            random_forest.fit(X, y)
+            random_forest.n_estimators += 1
 
         # Update SGD weights
         sgd_classifier.partial_fit(X, y, classes=[0, 1])

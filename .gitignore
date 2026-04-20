@@ -1,6 +1,6 @@
-# Model
-*.pth
-*.pkl
+# Model - they should be small enough
+# *.pth
+# *.pkl
 
 # Data
 *.tif
