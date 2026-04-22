@@ -41,7 +41,4 @@ The goal of this project is to train a machine learning model for road segmentat
         └── train_baselines.py            <- Code to train baseline models
         └── train_unet.py            <- Code to train U-Net model
 ```
-```
-
---------
 
