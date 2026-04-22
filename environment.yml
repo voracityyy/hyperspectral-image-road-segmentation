@@ -15,6 +15,10 @@ dependencies:
   - pandas
   - scikit-learn
   - ruff
+  - tifffile
+  - pytorch
+  - torchvision
   - pip:
     - python-dotenv
+    - segmentation-models-pytorch
     - -e .
