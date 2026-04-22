@@ -1,11 +1,8 @@
-# from pathlib import Path
-
 import numpy as np
 import tifffile as tiff
 import torch
 from torch.utils.data import Dataset
 from loguru import logger
-# from tqdm import tqdm
 import typer
 
 from hyperspectral_image_road_segmentation.config import HYPERSPECTRAL_DIR, MASKS_DIR

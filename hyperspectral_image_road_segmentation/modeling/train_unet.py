@@ -19,8 +19,6 @@ app = typer.Typer()
 @app.command()
 def main(
     # # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
-    # features_path: Path = PROCESSED_DATA_DIR / "features.csv",
-    # labels_path: Path = PROCESSED_DATA_DIR / "labels.csv",
     model_path: Path = MODELS_DIR / "unet.pth",
     # # -----------------------------------------
 ):
@@ -48,13 +46,11 @@ def main(
     # Updates weights after backpropagation / each batch
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001) # still need to test which param values are best
     # Calculates model prediction errors
-    loss_function = smp.losses.DiceLoss(mode="binary") # still need to test which loss function is best
-
-    # loss_function = smp.losses.CrossEntropyLoss()
+    loss_function = smp.losses.DiceLoss(mode="binary") 
 
     # Reduced learning rate (lr in optimizer) after x epochs (patience value)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-        optimizer, mode="min", factor=0.5, patience=3 # still need to test which param values are best
+        optimizer, mode="min", factor=0.5, patience=3 
     )
 
     # Lists to track training history for plots 

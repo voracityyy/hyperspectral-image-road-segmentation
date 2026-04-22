@@ -19,8 +19,6 @@ app = typer.Typer()
 @app.command()
 def main(
     # # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
-    # features_path: Path = PROCESSED_DATA_DIR / "features.csv",
-    # labels_path: Path = PROCESSED_DATA_DIR / "labels.csv",
     rf_model_path: Path = MODELS_DIR / "random_forest.pkl",
     sgd_model_path: Path = MODELS_DIR / "sgd_classifier.pkl",
     # # -----------------------------------------
